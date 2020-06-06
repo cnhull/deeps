@@ -1,0 +1,129 @@
+conv1:
+  requires: null
+  conflicts: null
+  next: conv2
+  start:
+    speaker: toby
+    display: Hey, Ingram! Got all the drone stuff worked out?
+    next: sec2
+    type: conv
+
+  sec2:
+    speaker: ingram
+    display: I think so? Also, I was trying to ask you a question earlier when you hung up. Left? Disconnected?
+    next: sec3
+    type: conv
+
+  sec3:
+    speaker: toby
+    display: Aha! Sorry about that. I think disconnected is probably a good word. So what did you want to ask?
+    next: sec4
+    type: conv
+
+  sec4:
+    speaker: ingram
+    display: What do I do when the drones come back? 
+    next: sec5
+    type: conv
+
+  sec5:
+    speaker: toby
+    display: Oh, don't worry about that. The drones all have a little card that you just pop into the computer, and the software takes it from there. Just remember to plug them into their chargers.
+    next: sec6
+    type: conv
+  
+  sec6:
+    speaker: ingram
+    display: And what about whatever information it collects?
+    next: sec7
+    type: conv
+
+  sec7:
+    speaker: toby
+    display: It's pretty intuitive. Most of it gets sent back automatically when you plug it into the computer - stuff like pH levels, salinity, temperature, stuff like that. The only stuff you have to go through manually is like... extra stuff. Photos, sound recordings, other stuff like that.
+    next: sec8
+    type: conv
+  
+  sec8:
+    speaker: toby
+    display: They've also got a little compartment for picking up things, so you'll probably get a decent amount of water, but you'll probably also get some rocks, maybe some bones, algae, stuff like that. And trash. Thanks, humanity. 
+    next: sec9
+    type: conv
+
+  sec9: 
+    speaker: ingram
+    display: Do you want any of that? You mostly do plankton and stuff, right?
+    next: sec10
+    type: conv
+
+  sec10:
+    speaker: toby
+    display: I trust that noggin of yours. I'll take whatever you want to send along. Any other questions? 
+    next: anythingElse
+    type: conv
+
+  anythingElse:
+    type: choice
+    choices:
+      A:
+        text: No other questions.
+        target: noQuestions
+      B:
+        text: I was wondering...
+        target: aef
+  
+  yesQuestions:
+    speaker: ingram
+    display: Actually, I was wondering...
+    next: questionChoice
+    type: conv
+
+  questionChoice:
+    type: choice
+    choices: 
+      A:
+        text: 
+
+  noQuestions:
+    speaker: ingram
+    display: No other questions. 
+    next: sec11
+    type: conv
+
+  sec11:
+    speaker: toby
+    display: Okay! Geneva is scheduled for check-in tomorrow, so I'll see you the day after! Or - talk to you, I guess. G'night, bud! 
+    next: sec12
+    type: conv
+
+  sec12: 
+    speaker: toby
+    display: Oh, wait - uhh, the Argonaut is there if you need it, safety is our top priority, blah, blah, blah. Okay. Good night.
+    next: sec13
+    type: conv
+  
+  sec13:
+    speaker: ingram
+    display: Good night, Toby.
+    next: end
+
+  end:
+    type: endOfDay
+
+conv2:
+  requires: null
+  conflicts: null
+  start:
+    speaker: ingram
+    display: ...
+    next: sec2
+    type: conv
+
+  sec2:
+    speaker: ingram
+    display: Toby? Are you back yet?
+    next: sec3
+    type: conv
+
+  end:
+    type: endOfDay
