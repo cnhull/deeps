@@ -147,7 +147,7 @@ class Drone extends Phaser.Scene {
         The following code check if a drone is dragged and dropped on a location.
         If drone is dropped on a location, the drone is removed and the counter of 
         that location is increased by one and the global variable bot(1-5)Loc that 
-        corresponds with that location is saved. This will be used in Analysis.js 
+        corresponds with that location is saved. This will be used in Deduction.js 
         to decide what kind of data the drone will recieve. 
         */
 
@@ -377,7 +377,7 @@ class Drone extends Phaser.Scene {
     sendDrones(){
         if((this.score1+this.score2+this.score3+this.score4+this.score5) == 5){
             this.sound.play('sfx_drop');
-            this.scene.start("analysisScene"); // Load into the analysis scene
+            this.scene.start("analysisScene"); // Load into the deduction scene
         }
     }
      
