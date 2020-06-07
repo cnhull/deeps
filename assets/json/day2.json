@@ -307,7 +307,7 @@
         "next": "sec21",
         "type": "conv"
       },
-      "sec21": {
+      "end": {
         "type": "endOfDay"
       }
     }
