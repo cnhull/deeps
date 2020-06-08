@@ -379,7 +379,7 @@
       },
       "sec2": {
         "speaker": "?",
-        "display": "......fullm####.. .... ##. ......#o#n.... ..... .....coo...... ..####.##saf##..... ....####l kno#..##...#..",
+        "display": "......fullm####.. .... ##. ......#o#n.... ..... .....com....e.. ..####.##se##e.. #m.e.. ..s@..f#e### #..#f#un...#..",
         "next": "sec3",
         "type": "conv"
       },
@@ -391,7 +391,7 @@
       },
       "sec4": {
         "speaker": "?",
-        "display": "..##te#e..####..hee!....",
+        "display": "..#le#ave..###st#@##t!on#....",
         "next": "sec5",
         "type": "conv"
       },
@@ -403,7 +403,7 @@
       },
       "sec6": {
         "speaker": "?",
-        "display": "...",
+        "display": "..##te#e..####..hee!....",
         "next": "end",
         "type": "conv"
       },

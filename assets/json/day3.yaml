@@ -200,7 +200,7 @@ conv4:
 
   noDiscuss3:
     speaker: ingram
-    display: Nothing else to discuss, but why do you want to leave early? Do you have something going on?
+    display: Nothing else to discuss, but why do you want to leave early? Do you have somewhere to be?
     next: sec2
     type: conv
   sec2:
