@@ -16,7 +16,34 @@ conv1:
         target: weird7
       B:
         text: Yes, Geneva. I'm here.
-        target: 
+        target: imHere
+
+  imHere:
+    speaker: ingram
+    display: Yes, Geneva. I'm here.
+    next: imHere2
+    type: conv
+  imHere2:
+    speaker: geneva
+    display: Is everything all right? Tobias mentioned that you seemed... tense. 
+    next: imHere3
+    type: conv
+  imHere3:
+    type: choice
+    choices:
+      A:
+        text: I'm fine. I'm holding it together. 
+        target: holdItTogether
+      B:
+        text: I'm... kind of stressed.
+        target: stress
+  stress:
+    speaker: ingram
+    display: I'm... kind of stressed. A bunch of weird things have been happening with the radio AND otherwise, and quite frankly, I'm - I'm scared. I was trying to play it cool but being down here alone is really creepy. I feel like I'm in a horror movie.
+    next: stress2
+    type: notOkay5
+  
+
 
   weird7:
     speaker: ingram
@@ -24,8 +51,8 @@ conv1:
     next: weird7re
     type: conv
   weird7re:
-    speaker: toby
-    display: Whoah! Take a seat, there, pal. That's quite an entrance. 
+    speaker: geneva
+    display: Calm down, Ingram. Tell me what happened.
     next: weird7re2
     type: conv
   weird7re2:
@@ -34,8 +61,8 @@ conv1:
     next: weird7re3
     type: conv
   weird7re3:
-    speaker: toby
-    display: What kind of weird things? I like weird. Weird is good. Weird makes Tobias very happy. 
+    speaker: geneva
+    display: Weird pictures?
     next: weird7re4
     type: conv
   weird7re4:
@@ -44,8 +71,8 @@ conv1:
     next: weird7re5
     type: conv
   weird7re5:
-    speaker: toby
-    display: That's very specific. Are you okay?
+    speaker: geneva
+    display: That's... very specific. Are you okay?
     next: weird7choice
   weird7choice:
     type: choice
@@ -56,6 +83,53 @@ conv1:
       B:
         text: I'm fine. I'm holding it together. 
         target: holdItTogether
+
+  holdItTogether:
+    speaker: ingram
+    display: I'm Fine. I'm holding it together. It's just a few more days. I'm fine. I can handle it.
+    next: together2
+    type: conv
+  together2:
+    speaker: geneva
+    display: I'm going to be honest, Ingram. It doesn't feel like you're okay. But I'm going to trust what you're saying over what I'm feeling. Just.. Be safe. Don't do anything reckless.
+    next: together3
+    type: conv
+  together3:
+    speaker: ingram
+    display: ...I know. 
+    next: together4
+    type: conv
+  together4:
+    speaker: geneva
+    display: ...Is there anything you want to talk about before I go? 
+    next: together5
+    type: conv
+  together5:
+    speaker: ingram
+    display: ...No.
+    next: together6
+    type: conv
+  together6:
+    speaker: geneva
+    display: ...Ahem. As always, the Argonaut is there if you need to leave the station for any reason, and the emergency button is there for emergencies. Use them if you need them, Ingram.
+    next: together7
+    type: conv
+  together7:
+    speaker: ingram
+    display: ... I know.
+    next: together8
+    type: conv
+  together8:
+    speaker: geneva
+    display: Good night, Ingram.
+    next: together9
+    type: conv
+  together9:
+    speaker: ingram
+    display: Goodbye, Geneva.
+    next: end
+    type: conv
+
   notOkay:
     speaker: ingram
     display: Do I sound okay? God - I've been trying to be all cool about it, but being down here alone is really creepy! I can't even tell if I'm imagining things, anymore.
@@ -64,58 +138,142 @@ conv1:
   notOkay2:
     speaker: ingram
     display: Like. I thought I heard tapping at one of the windows the other day, and I look, and for half a second, I thought there was a face. It sounds crazy, and rationally, it IS crazy. But my gut keeps going "what if, what if what if?"
-    
+    next: notOkay3
+    type: conv
+  notOkay3:
+    speaker: ingram
+    display: I keep debating between sleeping with the lights on or not. At least if the lights are off, if something does come to kill me, I won't have to see it when it does!
+    next: notOkay4
+    type: conv
+  notOkay4:
+    speaker: ingram
+    display: God. 
+    next: notOkay5
+    type: conv
+  notOkay5:
+    speaker: geneva
+    display: '...'
+    next: notOkay6
+    type: conv
+  notOkay6:
+    speaker: geneva
+    display: I'm sorry. This is my fault. I should have resisted more when they suggested sending you down alone. I'll have a boat out to your location by dawn. 
+    next: notOkay7
+    type: conv
+  notOkay7:
+    speaker: ingram
+    display: Geneva, no - you don't need to - 
+    next: notOkay8
+    type: conv
+  notOkay8:
+    speaker: geneva
+    display: No. It's not healthy, and it's been a safety hazard from the very beginning. We never should have asked you to do this. We should have just called off the whole thing when Tobias broke his leg. Gather everything you need and start packing the Argonaut. 
+    next: notOkay9
+    type: conv
+  notOkay9:
+    speaker: ingram
+    display: I... I'm not gonna win this argument. Thank you, Geneva. 
+    next: notOkay10
+    type: conv
+  notOkay10:
+    speaker: geneva
+    display: Don't thank me for fixing my own mistakes. 
+    next: notOkay11
+    type: conv
+  notOkay11:
+    speaker: geneva
+    display: ...For what it's worth, Ingram, when I feel like I'm in a horror movie... I turn on Disney music. That way at least nobody can use the footage without Disney's legal team up their ass.
+    next: notOkay12
+    type: conv
+  notOkay12:
+    speaker: ingram
+    display: One last huzzah, huh? Not a bad idea. I... Thank you. I'll see you soon. 
+    next: notOkay13
+    type: conv
+  notOkay13:
+    speaker: geneva
+    display: Before you go, promise me you'll do something tonight?
+    next: notOkay14
+    type: conv
+  notOkay14:
+    speaker: geneva
+    display: Unplug the stupid radio.
+    next: notOkay15
+    type: conv
+  notOkay15:
+    speaker: ingram
+    display: Heh... I'll do that. Good night, Geneva.
+    next: notOkay16
+    type: conv
+  notOkay16:
+    speaker: geneva
+    display: Good night, Ingram.
+    next: end
+    type: conv
+  end:
+    type: end
 
-conv7:
-  requires: 
-    - endGameEarly
+conv2:
+  requirements:
+    - holdItTogether
   conflicts: null
-  next: null
+  next: conv7
   start:
-    speaker: '?'
-    display: '...you......#w##.. ant.... ##. ......t#o#.... ..... ...le$ve?...... ..####.##saf##..... ....##co@#l pen!#..##...#..'
-    next: bet1
-    type: conv
+    speaker: 'ingram'
+    display: '................ .......................... .........................'
+    next: end
+    type: sec1
     flag: special
-  bet1:
-    speaker: ingram
-    display: ...Stop it.
-    next: sec1
-    type: conv
-  sec1: 
+  sec1:
     speaker: '?'
-    display: '...#.... .....#wh#y-..d.o..... ..y#o. .u......#.... ...##w#an.t.. ...#.t....o.##........l#eave.... .....e#...arl..y?.#...'
-    next: bet2
-    type: conv
-  bet2:
-    speaker: ingram
-    display: Stop mimicking us. 
+    display: '...co.##me...fi. nd##..... ....m#..e....'
     next: sec2
     type: conv
   sec2:
-    speaker: '?'
-    display: '.....#....d.o...#. ..#.y. .#ou... ...#hav.e.-inf-..s@mew#ere.#... ..to..#. ....#.b.e?... ....#..#I-ll....... ..m!s$....#.y.ou...#...'
+    speaker: 'ingram'
+    display: You... want me to find you.
     next: sec3
     type: conv
   sec3:
-    speaker: ingram
-    display: I'm  not doing this. I don't need to listen to... whatever you are.
+    speaker: '?'
+    display: '..st#a.y.#w##i.th...me..... ....s#.fe....'
     next: sec4
     type: conv
   sec4:
-    speaker: '?'
-    display: '...sh.ould#...yo.u.#ne#d t@.. l#ave#..th.s##@tion#..f..or... a n.y rea$o.n.....'
+    speaker: ingram
+    display: '......'
     next: sec5
     type: conv
   sec5:
-    speaker: ingram
-    display: No. I'm going home and I'm not coming back down agai - 
-    next: end
+    speaker: ' '
+    display: '........................................... ......................'
+    next: sec6
     type: conv
   sec6:
-    speaker: '?'
-    display: '...'
+    speaker: ' '
+    display: Dr. Ingram, do you copy? The vessel stationed at Marine Station O.G.G.A. sent out an undocking notification early this morning and its GPS has been damaged. Dr. Ingram, if you're there, we are requesting any information you may have on the subject...
     next: end
     type: conv
+  end:
+    type: endGame
+
+
+conv7:
+  requires: 
+    - notOkay
+  conflicts: null
+  next: null
+  start:
+    speaker: ingram
+    display: '..................................... ......................'
+    next: sec1
+    type: special
+    flag: special
+  sec1:
+    speaker: '?'
+    display: '...pl.##ease.... sta -'
+    next: end
+    type: conv
+    flag: 
   end:
     type: endGame
