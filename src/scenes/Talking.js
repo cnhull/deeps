@@ -60,7 +60,8 @@ class Talking extends Phaser.Scene {
         this.day = [
             this.cache.json.get('dialog'),
             this.cache.json.get('day1'),
-            this.cache.json.get('day2')
+            this.cache.json.get('day2'),
+            this.cache.json.get('day6')
 
         ]
         this.daynum = game.globalDay;
@@ -72,9 +73,10 @@ class Talking extends Phaser.Scene {
         this.current = this.dialog.conv1;
 
 
+        this.bg = this.add.sprite(0, 0, 'dialogbg').setOrigin(0,0);
         this.toby = this.add.sprite(this.OFFSCREEN_X, centerY + 1/2*mod, 'toby').setOrigin(0, 1);
         this.geneva = this.add.sprite(this.OFFSCREEN_X, centerY + 1/2*mod, 'geneva').setOrigin(0, 1);
-        this.dim = this.add.rectangle(centerX, 0, 640, 480, 0x000000).setOrigin(0, 0);
+        this.dim = this.add.rectangle(0, 0, 640, 480, 0x000000).setOrigin(0, 0);
         this.dim.alpha = 0;
 
         this.box1 = this.add.tileSprite(0, 0, 640, 480, 'dialogbox1').setOrigin(0, 0);
@@ -140,6 +142,11 @@ class Talking extends Phaser.Scene {
         this.skipButton = new TextButton(this, button4, buttonY, 'Skip->',  game.buttonConfig, () => this.skip()).setOrigin(0.5, 0.5);
         this.add.existing(this.skipButton);
 
+        // add arrow in appropriate position
+        this.meter = new Arrow(this, 15, game.settings.meterY, 'arrow', 0, 30).setOrigin(0,0);
+
+        //check global workStatus to see if certain conversations should play
+        this.workStatus();
         // start dialog
         this.checkType2("start");
         //this.typeText();
@@ -253,12 +260,30 @@ class Talking extends Phaser.Scene {
         return true;
     }
 
+    workStatus(){
+        //global check for work status to determine whether or not certain conversations should play
+        if(game.workStatus > -1){
+            if(game.dec.has("negative")){
+                game.dec.remove("negative");
+            }
+        }
+        if(game.workStatus < 0){
+            game.dec.add("negative");
+        }
+    }
+
     checkType2(scene){
+        
+
+
         this.nextConvButton.alpha = 0;
         this.fullButton.alpha = 0;
         this.cont.alpha = 0;
         let hold = this.current[scene];
         if(hold.type == "conv"){
+            if(hold.flag){
+                this.special();
+            }
             this.makeConv(scene);
         }
         if(hold.type == "choice"){
@@ -288,6 +313,7 @@ class Talking extends Phaser.Scene {
     }
 
     makeChoice(scene){
+        this.skipButton.alpha = 0;
         this.megaDim.alpha = 0.5;
         let hold = this.current[scene];
         this.testButton.alpha = 0;
@@ -297,6 +323,17 @@ class Talking extends Phaser.Scene {
         this.buttonB.text = hold.choices.B.text;
         this.holdB = hold.choices.B.target;
         this.buttonB.alpha = 1;
+    }
+
+    special(){
+        if(this.currentSpeaker) {
+            console.log("im gonna fade out");
+            if(this.currentSpeaker !== "ingram"){
+              this.lastSpeaker = this.currentSpeaker;  
+            }
+            
+            this.fadeOut();
+        }
     }
 
     endScene(){

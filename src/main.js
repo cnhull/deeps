@@ -16,6 +16,8 @@ let game = new Phaser.Game(config);
 
 game.globalDay = 0;
 
+game.workStatus = 0;
+
 const centerX = game.config.width / 2;
 const centerY = game.config.height / 2;
 const mod = 32;
@@ -42,6 +44,7 @@ game.dec = new Set();
 
 // Define game variables
 game.settings = {
+    meterY: 228,
     day_count : 0, // Keeps track of the current day  
     data1 : 0,     // Data retrieved from Drone 1
     data2 : 0,     // Data retrieved from Drone 2

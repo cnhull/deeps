@@ -10,6 +10,9 @@ class Drone extends Phaser.Scene {
         this.load.image('marker_sprite', './assets/Marker.png');
         this.load.image('UI', './assets/BlankUI.png');
         this.load.image('arrow', './assets/arrow.png');
+        
+        this.load.video('on', './assets/screenOn.mp4');
+
         // Add drone interaction audio
         this.load.audio('sfx_drop', './assets/Click1.mp3');
     }
@@ -18,6 +21,8 @@ class Drone extends Phaser.Scene {
         // Define title track
         var title_music;
         this.title_music = game.sound.add('sfx_title');
+
+        
         
         
         
@@ -66,11 +71,11 @@ class Drone extends Phaser.Scene {
         }
 
         // Draw locational stand ins
-        this.location01 = new Spot(this, 80, 100, 'marker_sprite', 0, 30).setOrigin(0,0);  // Counter 1 for Location 1
-        this.location02 = new Spot(this, 175, 200, 'marker_sprite', 0, 30).setOrigin(0,0); // Counter 2 for Location 2
-        this.location03 = new Spot(this, 245, 80, 'marker_sprite', 0, 30).setOrigin(0,0);  // Counter 3 for Location 3
-        this.location04 = new Spot(this, 340, 165, 'marker_sprite', 0, 30).setOrigin(0,0); // Counter 4 for Location 4
-        this.location05 = new Spot(this, 440, 110, 'marker_sprite', 0, 30).setOrigin(0,0); // Counter 5 for Location 5
+        this.location01 = new Spot(this, 95, 115, 'marker_sprite', 0, 30).setOrigin(0,0);  // Counter 1 for Location 1
+        this.location02 = new Spot(this, 190, 215, 'marker_sprite', 0, 30).setOrigin(0,0); // Counter 2 for Location 2
+        this.location03 = new Spot(this, 260, 95, 'marker_sprite', 0, 30).setOrigin(0,0);  // Counter 3 for Location 3
+        this.location04 = new Spot(this, 355, 180, 'marker_sprite', 0, 30).setOrigin(0,0); // Counter 4 for Location 4
+        this.location05 = new Spot(this, 455, 125, 'marker_sprite', 0, 30).setOrigin(0,0); // Counter 5 for Location 5
 
         
         // Draw map background
@@ -87,7 +92,7 @@ class Drone extends Phaser.Scene {
         this.droneTitle = this.add.text(346, 432, 'SEND', textConfig);
         this.droneTitle = this.add.text(220, 432, 'RESET', textConfig);
         //this.droneTitle = this.add.text(300, 70, 'Press -X- to send the Drones!', textConfig);
-        this.meter = new Arrow(this, 15, 228, 'arrow', 0, 30).setOrigin(0,0);
+        this.meter = new Arrow(this, 15, game.settings.meterY, 'arrow', 0, 30).setOrigin(0,0);
         
 
         // Add counters
@@ -118,6 +123,7 @@ class Drone extends Phaser.Scene {
         else if(this.meter.y > 338){
             this.meter.y = 338;
         }
+        this.game.settings.meterY = this.meter.y;
         
         // Checks if mouse should be dragging a drone
         // and sets the drone x/y to the mouse x/y

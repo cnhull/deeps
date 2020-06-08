@@ -133,7 +133,8 @@
       "sec17": {
         "speaker": "geneva",
         "display": "As always, the Argonaut is there should you need to leave the staion for any reason, the emergency contact button is there for emergencies, and so on. Did you have anything you wanted to discuss?",
-        "next": "sec18"
+        "next": "sec18",
+        "type": "conv"
       },
       "sec18": {
         "type": "choice",
@@ -257,7 +258,8 @@
       "anythingElseA": {
         "speaker": "geneva",
         "display": "Was there anything else you wanted to talk about?",
-        "next": "discussChoiceB"
+        "next": "discussChoiceB",
+        "type": "conv"
       },
       "argonaut": {
         "speaker": "ingram",
@@ -286,7 +288,7 @@
       "jokeRe": {
         "speaker": "geneva",
         "display": "You're allowed to use the Argonaut if and ONLY if your safety at the station has been compromised and you need to return to the surface. And it lets us know if you undock it.",
-        "next": "anythingElse",
+        "next": "anythingElseB",
         "type": "conv"
       },
       "anythingElseB": {
@@ -304,7 +306,7 @@
       "sec20": {
         "speaker": "ingram",
         "display": "Good night, Geneva.",
-        "next": "sec21",
+        "next": "end",
         "type": "conv"
       },
       "end": {

@@ -1,0 +1,133 @@
+conv1:
+  requires: null
+  conflicts: null
+  next: null
+  start:
+    speaker: toby
+    display: Knock, knock! Anybody home in there?
+    next: sec2
+    type: conv
+
+  sec2:
+    type: choice
+    choices:
+      A:
+        text: Who's there?
+        target: knockknock
+      B:
+        text: Hi, Toby.
+        target: hiToby
+
+  knockknock:
+    speaker: ingram
+    display: Who's there?
+    next: knockRe
+    type: conv
+  knockRe:
+    speaker: toby
+    display: I am!
+    next: knockRe2
+    type: conv
+  knockRe2:
+    speaker: ingram
+    display: I am who?
+    next: knockRe3
+    type: conv
+  knockRe3:
+    speaker: toby
+    display: Uh-oh! Should I tell Geneva you've gone off the deep end? You don't even know who you are? 
+    next: knockRe4
+    type: conv
+  knockRe4:
+    speaker: ingram
+    display: Okay, that was actually kind of funny. 
+    next: sec2
+    type: conv
+
+  hiToby:
+    speaker: ingram
+    display: Hi, Toby.
+    next: sec3
+    type: conv
+
+  sec3:
+    speaker: toby
+    display: So how's the underwater life? Feeling claustrophobic yet?
+    next: sec4
+    type: conv
+  sec4:
+    speaker: ingram
+    display: Maybe a little. I know we have a lot more space than they do on the ISS, but after a few weeks... Ugh. 
+    next: sec5
+    type: conv
+  sec5:
+    speaker: toby
+    display: Ha! I certainly don't miss that. So how's the data coming along?
+    next: end
+    type: conv
+  end:
+    type: end
+  
+conv2:
+  requires: 
+    - "negative"
+  conflicts: null
+  next: conv3
+  start:
+    speaker: ingram
+    display: It's, uh... You know. It's coming along. Not very well. I'm still trying to figure it out.
+    next: sec1
+    type: conv
+
+  sec1:
+    speaker: toby
+    display: I didn't really want to say anything but... yeah, it hasn't been great. But I'm sure you'll get the hang of it! 
+    next: sec2
+    type: conv
+
+  sec2:
+    speaker: ingram
+    display: You're right. I'll put more thought into it next time.
+    next: sec3
+    type: conv
+  
+  sec3:
+    speaker: toby
+    display: That's the spirit!
+    next: end
+    type: conv
+
+  end: 
+    type: end
+
+conv3:
+  requires: null
+  conflicts: 
+    - "negative"
+  next: conv4
+  start:
+    speaker: ingram
+    display: I think it's been coming along pretty well!
+    next: sec1
+    type: conv
+
+  sec1:
+    speaker: toby
+    display: I haven't heard any complaints yet, so you must be doing something right!
+    next: end
+    type: conv
+  
+  end:
+    type: end
+
+conv4:
+  requires: null
+  conflicts: null
+  next: null
+  start:
+    speaker: 
+    display:
+    next: 
+    type: conv
+  end:
+    type: endOfDay

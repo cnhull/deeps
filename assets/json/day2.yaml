@@ -1,7 +1,7 @@
 conv1:
   requires: null
   conflicts: null
-  next: null
+  next: conv2
   start:
     speaker: geneva
     display: >-
@@ -135,6 +135,7 @@ conv1:
     speaker: geneva
     display: As always, the Argonaut is there should you need to leave the staion for any reason, the emergency contact button is there for emergencies, and so on. Did you have anything you wanted to discuss?
     next: sec18
+    type: conv
 
   sec18:
     type: choice
@@ -244,6 +245,7 @@ conv1:
     speaker: geneva
     display: Was there anything else you wanted to talk about?
     next: discussChoiceB
+    type: conv
   
   argonaut:
     speaker: ingram
@@ -290,8 +292,14 @@ conv1:
   sec20:
     speaker: ingram
     display: Good night, Geneva.
-    next: sec21
+    next: end
     type: conv
+  end:
+    type: end
 
+conv2:
+  requires: null
+  conflicts: null
+  
   end:
     type: endOfDay

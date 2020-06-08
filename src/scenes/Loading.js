@@ -15,6 +15,7 @@ class Loading extends Phaser.Scene {
         this.load.json('dialog', 'json/dialog.json');
         this.load.json('day1', 'json/day1.json');
         this.load.json('day2', 'json/day2.json');
+        this.load.json('day6', 'json/day6.json');
 
         //character sprites
         this.load.image('geneva', 'img/geneva.png');
@@ -24,6 +25,7 @@ class Loading extends Phaser.Scene {
         this.load.image('UI', 'img/UI.png');
         this.load.image('arrow', 'img/arrow.png');
         this.load.image('BookUI', 'img/blank_book.png');
+        this.load.image('dialogbg', 'img/dialog_bg.png');
         this.load.image('dialogbox1', 'img/dialogbox1.png');
         this.load.image('dialogbox2', 'img/dialogbox2.png');
 
@@ -50,6 +52,9 @@ class Loading extends Phaser.Scene {
 
 
         //whatever the fuck these are supposed to be
+        this.load.video('on', 'img/screenOn.mp4');
+        this.load.video('off', 'img/screenOff.mp4');
+
          this.load.image('day0', 'img/DeepSea.png');
          this.load.image('day1', 'img/Day1.png');
          this.load.image('day2', 'img/Day2.png');
