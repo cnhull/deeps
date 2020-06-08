@@ -236,6 +236,12 @@
             "target": "myBest"
           }
         }
+    },
+      "myBest": {
+        "speaker": "ingram",
+        "display": "I'll do my best. I just hope I live up to your standards!",
+        "next": "anythingElseA",
+        "type": "conv"
       },
       "noPromise": {
         "speaker": "ingram",

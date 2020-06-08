@@ -111,7 +111,7 @@ conv2:
     type: conv
   radio5re2:
     speaker: ingram
-    display: It turned on in the middle of the night last night. Or - I guess that's not quite it. It's normally pretty quiet unless one of you is broadcasting, but it started picking something up at like... two or three in the morning.
+    display: It turned on in the middle of the night last night. Or - I guess that's not quite it. It's normally pretty quiet unless one of you is broadcasting, but it's started picking something up at like... two or three in the morning.
     next: radio5re3
     type: conv
   radio5re3:
@@ -161,7 +161,7 @@ conv2:
     type: conv
   end:
     type: end
-    
+
 
 conv3:
   requires: 
@@ -169,14 +169,73 @@ conv3:
     - radio3
     - weirdThings4
   conflicts: null
-  next: conv3
+  next: convUp
   start: 
     speaker: toby
     display: I mean, like I said you can always turn off the radio. But honestly... You're kind of worrying me and Geneva. Do you want to come back up? 
-    next: goUp5
+    next: end
     type: conv
-  goUp5:
+  end:
+    type: end
+
+convUp:
+  requires:
+    - creeped
+  conflicts: null
+  next: conv4
+  start:
     type: choice
+    choices:
+      A:
+        text: ...I want to come back to the surface.
+        target: endGameEarly
+      B:
+        text: No. Everything is fine. 
+        target: liar
+  endGameEarly:
+    speaker: toby
+    display: Okay. I'll talk to Geneva. If it comes down to it we can always send the coast guard to pick you up! 
+    next: endgame1
+    type: conv
+  endgame1:
+    speaker: ingram
+    display: ...I'm sorry.
+    next: endgame2
+    type: conv
+  endgame2:
+    speaker: toby
+    display: Don't worry about it, bud. God knows I've gotten spooked enough times down there. I get it. Just make sure you don't leave anything important behind! Gimmie a minute to go find Geneva.
+    next: endgame3
+    type: conv
+  endgame3:
+    speaker: ingram
+    display: '...okay.'
+    next: endgame4
+    type: conv
+  endgame4:
+    speaker: ingram
+    display: '...'
+    next: endgame5
+    type: conv
+  endgame5:
+    speaker: toby
+    display: Hey, bud. Still there?
+    next: endgame6
+    type: conv
+  endgame6:
+    speaker: ingram
+    display: ...Yeah.
+    next: endgame7
+    type: conv
+  endgame7:
+    speaker: toby
+    display: Geneva says not to worry about anything. Just get everything important packed onto the Argonaut and a boat will meet you in the morning. Sound good?
+    next: endgame8
+    type: conv
+  endgame8:
+    speaker: ingram
+    display: Yeah. I'll go ahead
+
 
   
 conv4:
