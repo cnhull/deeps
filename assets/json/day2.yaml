@@ -300,6 +300,42 @@ conv1:
 conv2:
   requires: null
   conflicts: null
-  
+  next: null
+  start:
+    speaker: '?'
+    display: '...................... ............... .................. ..............'
+    next: sec1
+    type: conv
+    flag: special
+  sec1: 
+    speaker: '?'
+    display: '....... ............ ... ........... ...... ..................... ..............'
+    next: sec2
+    type: conv
+  sec2:
+    speaker: '?'
+    display: '.............. .... .... ............. ..... ........... .............. ..............'
+    next: sec3
+    type: conv
+  sec3:
+    speaker: ingram
+    display: ...(muttering) Is that the radio?
+    next: sec4
+    type: conv
+  sec4:
+    speaker: '?'
+    display: '...............'
+    next: sec5
+    type: conv
+  sec5:
+    speaker: ingram
+    display: ...What's it doing?
+    next: sec6
+    type: conv
+  sec6:
+    speaker: '?'
+    display: '...'
+    next: end
+    type: conv
   end:
     type: endOfDay

@@ -64,6 +64,20 @@ class Talking extends Phaser.Scene {
             this.cache.json.get('day6')
 
         ]
+
+        // play music
+        if (game.globalDay <= 5 && !this.music1Playing) {
+            this.music1Playing = true;
+            this.talkingMusic1 = game.sound.add('aquaria');
+            this.talkingMusic1.play(game.musicConfig);
+        } else if (game.globalDay > 5 && !this.music2Playing) {
+            this.music2Playing = true;
+            this.talkingMusic1.stop();
+            this.talkingMusic2 = game.sound.add('quinns_song');
+            this.talkingMusic2.play(game.musicConfig);
+        }
+
+        
         this.daynum = game.globalDay;
         //let day1 = this.cache.json.get('dialog');
         //this.dialog = this.cache.json.get('dialog');
@@ -150,6 +164,9 @@ class Talking extends Phaser.Scene {
         // start dialog
         this.checkType2("start");
         //this.typeText();
+        this.sound.play('sfx_radio', {volume: 0.05});
+
+        //INSERT FADE IN HERE
     }
 
     update() {
@@ -334,6 +351,7 @@ class Talking extends Phaser.Scene {
             
             this.fadeOut();
         }
+        this.sound.play('sfx_radio', {volume: 0.05});
     }
 
     endScene(){
@@ -397,6 +415,7 @@ class Talking extends Phaser.Scene {
                 this.current = this.dialog.conv1;
                 console.log(this.dialog);
                 console.log(this.current);
+                //INSERT FADE OUT HERE
                 this.scene.start("droneScene")
                 //this.go("start");
             }

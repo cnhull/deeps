@@ -85,7 +85,7 @@ conv1:
     type: choice
     choices:
       A:
-        text: 'It''s too bad about the wifi, though.'
+        text: It's too bad about the wifi, though.
         target: noWifi
       B:
         text: 'Yeah, it is kind of fun.'
@@ -151,7 +151,7 @@ conv1:
     type: conv
   cont1:
     speaker: ingram
-    display: 'I feel you, buddy. But they''re here now.'
+    display: I feel you, buddy. But they're here now.
     next: cont2
     type: conv
   cont2:

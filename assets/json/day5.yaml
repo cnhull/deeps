@@ -1,0 +1,441 @@
+conv1:
+  requires: null
+  conflicts: null
+  next: null
+  start:
+    speaker: toby
+    display: Nyah! What's up, Doc?
+    next: sec2
+    type: conv
+
+  sec2:
+    type: choice
+    choices:
+      A:
+        text: Bugs? Right?
+        target: bugsBunny
+      B:
+        text: Hi, Toby.
+        target: hiToby
+
+  bugsBunny:
+    speaker: ingram
+    display: Bugs? Right? Bugs Bunny?
+    next: bugsRe
+    type: conv
+  bugsRe:
+    speaker: toby
+    display: ...You have to ask? Ingram. I'm disappointed in you.
+    next: knockRe2
+    type: conv
+  knockRe2:
+    speaker: ingram
+    display: I was a Peanuts kid, what can I say?
+    next: knockRe3
+    type: conv
+  knockRe3:
+    speaker: toby
+    display: There's like twenty years between those. 
+    next: knockRe4
+    type: conv
+  knockRe4:
+    speaker: ingram
+    display: Your point? Anyway how are things?
+    next: sec3
+    type: conv
+
+  hiToby:
+    speaker: ingram
+    display: Hi, Toby.
+    next: sec3
+    type: conv
+
+  sec3:
+    speaker: toby
+    display: Nothing new up here... I found a 3D model for Al, so I'm gonna be printing that out for my neice once my filament comes in. How ya doin', Doc?
+    next: sec4
+    type: conv
+  sec4:
+    type: choice
+    choices: 
+      A:
+        text: Kinda creeped out.
+        target: creeped
+      B:
+        text: A-OK. 
+        target: aok
+  creeped:
+    speaker: ingram
+    display: I'm kind of creeped out. Weird things keep happening with the radio, and I just.. It's creepy. It's been getting clearer every night. Eugh. (shiver)
+    next: end
+    type: conv
+  aok:
+    speaker: ingram
+    display: I'm doing A-OK. Fine and dandy. Nothing to worry about here.
+    next: aok2
+    type: conv
+  aok2:
+    speaker: toby
+    display: Uh... are you sure? 
+    next: aok3
+    type: conv
+  aok3:
+    speaker: ingram
+    display: Yep. Nothing to worry about. Everything is fine. 
+    next: aok4
+    type: conv
+  aok4:
+    speaker: toby
+    display: Um... If - uh, if you insist. 
+    next: end
+    type: conv
+  end:
+    type: end
+
+
+conv2:
+  requires:
+    - creeped
+  conflicts: 
+    - radio3
+  next: conv3
+  start: 
+    speaker: ingram
+    display: The radio isn't busted, is it?
+    next: radio5re
+    type: conv
+  radio5re:
+    speaker: toby
+    display: It wasn't the last time I checked. Why?
+    next: Radio5re2
+    type: conv
+  radio5re2:
+    speaker: ingram
+    display: It turned on in the middle of the night last night. Or - I guess that's not quite it. It's normally pretty quiet unless one of you is broadcasting, but it started picking something up at like... two or three in the morning.
+    next: radio5re3
+    type: conv
+  radio5re3:
+    speaker: toby
+    display: That's weird. Why not just turn it off?
+    next: radio5re4
+    type: conv
+  radio5re4:
+    speaker: ingram
+    display: I - I don't - (sigh) I don't want to turn it off unless I have to. I'm kind of... cut off down here. There's the emergency button, yeah, but it's not like I'm having an emergency. 
+    next: radio5re5
+    type: conv
+  radio5re5:
+    speaker: ingram
+    display: It's just creepy down here by myself and if someone is trying to talk to me on the other end of the radio, I'd like to know. 
+    next: radio5re6
+    type: conv
+  radio5re6:
+    speaker: toby
+    display: Oh. 
+    next: radio5re7
+    type: conv
+  radio5re7:
+    speaker: ingram
+    display: '...'
+    next: radio5re8
+    type: conv
+  radio5re8:
+    speaker: toby
+    display: I guess I can understand that.
+    next: radio5re9
+    type: conv
+  radio5re9:
+    speaker: toby
+    display: In any case, to answer your question, it might be picking up a signal from a passing ship. Or it could be aliens. Y'know. Always a possibility.
+    next: radio5re10
+    type: conv
+  radio5re10:
+    speaker: ingram
+    display: I guess...
+    next: radio5re11
+    type: conv
+  radio5re11:
+    speaker: toby
+    display: Did you want to talk about anything else?
+    next: end
+    type: conv
+  end:
+    type: end
+    
+
+conv3:
+  requires: 
+    - creeped
+    - radio3
+    - weirdThings4
+  conflicts: null
+  next: conv3
+  start: 
+    speaker: toby
+    display: I mean, like I said you can always turn off the radio. But honestly... You're kind of worrying me and Geneva. Do you want to come back up? 
+    next: goUp5
+    type: conv
+  goUp5:
+    type: choice
+
+  
+conv4:
+  requires: 
+    - "negative"
+  conflicts: null
+  next: conv3
+  start:
+    speaker: ingram
+    display: It's, uh... You know. It's coming along. Not very well. I'm still trying to figure it out.
+    next: sec1
+    type: conv
+
+  sec1:
+    speaker: toby
+    display: I didn't really want to say anything but... yeah, it hasn't been great. But I'm sure you'll get the hang of it! 
+    next: sec2
+    type: conv
+
+  sec2:
+    speaker: ingram
+    display: You're right. I'll put more thought into it next time.
+    next: sec3
+    type: conv
+  
+  sec3:
+    speaker: toby
+    display: That's the spirit!
+    next: end
+    type: conv
+
+  end: 
+    type: end
+
+conv5:
+  requires: null
+  conflicts: 
+    - "negative"
+  next: conv4
+  start:
+    speaker: ingram
+    display: I think it's been coming along pretty well!
+    next: sec1
+    type: conv
+  sec1:
+    speaker: toby
+    display: I haven't heard any complaints yet, so you must be doing something right!
+    next: end
+    type: conv
+  end:
+    type: end
+
+conv6:
+  requires: null
+  conflicts: null
+  next: conv5
+  start:
+    speaker: toby
+    display: Unless you had anything specific you wanted to talk about, I actually wanted to head out a little early today...
+    next: sec1
+    type: conv
+  sec1:
+    type: choice
+    choices:
+      A:
+        text: The radio?
+        target: radio3
+      B:
+        text: Nothing else to discuss.
+        target: noDiscuss3
+
+  radio3:
+    speaker: ingram
+    display: The radio isn't busted, is it?
+    next: radio3re
+    type: conv
+  radio3re:
+    speaker: toby
+    display: It wasn't the last time I checked. Why?
+    next: Radio3re2
+    type: conv
+  radio3re2:
+    speaker: ingram
+    display: It turned on in the middle of the night last night. Or - I guess that's not quite it. It's normally pretty quiet unless one of you is broadcasting, but it started picking something up at like... two or three in the morning.
+    next: radio3re3
+    type: conv
+  radio3re3:
+    speaker: toby
+    display: That's weird. Why not just turn it off?
+    next: radio3re4
+    type: conv
+  radio3re4:
+    speaker: ingram
+    display: I - I don't - (sigh) I don't want to turn it off unless I have to. I'm kind of... cut off down here. There's the emergency button, yeah, but it's not like I'm having an emergency. 
+    next: radio3re5
+    type: conv
+  radio3re5:
+    speaker: ingram
+    display: It's just creepy down here by myself and if someone is trying to talk to me on the other end of the radio, I'd like to know. 
+    next: radio3re6
+    type: conv
+  radio3re6:
+    speaker: toby
+    display: Oh. 
+    next: radio3re7
+    type: conv
+  radio3re7:
+    speaker: ingram
+    display: '...'
+    next: radio3re8
+    type: conv
+  radio3re8:
+    speaker: toby
+    display: I guess I can understand that.
+    next: radio3re9
+    type: conv
+  radio3re9:
+    speaker: toby
+    display: In any case, to answer your question, it might be picking up a signal from a passing ship. Or it could be aliens. Y'know. Always a possibility.
+    next: radio3re10
+    type: conv
+  radio3re10:
+    speaker: ingram
+    display: I guess...
+    next: radio3re11
+    type: conv
+  radio3re11:
+    speaker: toby
+    display: Was there anything else? I'm gearing up to hit the road.
+    next: noDiscuss3
+    type: conv
+
+  noDiscuss3:
+    speaker: ingram
+    display: Nothing else to discuss, but why do you want to leave early? Do you have something going on?
+    next: sec2
+    type: conv
+  sec2:
+    speaker: toby
+    display: Yeah, uh. It's my niece's birthday soon? She's got a birthday party this weekend. I wanted to go later in the week but I've got some doctor's appointments. 
+    next: sec3
+    type: conv
+  sec3:
+    speaker: ingram
+    display: Do you know what you want to get for her?
+    next: sec4
+    type: conv
+  sec4:
+    speaker: toby
+    display: I was just going to... you know... Go to the mall and hope I saw something inspiring?
+    next: sec5
+    type: conv
+  sec5:
+    speaker: ingram
+    display: How old is she? Or - how old is she turning, I guess.
+    next: sec6
+    type: conv
+  sec6:
+    speaker: toby
+    display: She's turning twelve. Or is she already twelve? Wait - no - (muttering) four, five six - no she's turning twelve. 
+    next: sec7
+    type: conv
+  sec7:
+    speaker: ingram
+    display: And? What's she into?
+    next: sec8
+    type: conv
+  sec8:
+    speaker: toby
+    display: Uh... She's into, like... fantasy books? I can't remember if she's done with her dragon phase or not. And, uh. Anime. 
+    next: sec9
+    type: conv
+  sec9:
+    speaker: ingram
+    display: Nobody "grows out" of their dragon phase. You just get more subtle about it. 
+    next: sec10
+    type: conv
+  sec10:
+    speaker: toby
+    display: True.
+    next: sec11
+    type: conv
+  sec11:
+    speaker: ingram
+    display: You said she likes anime, though. Why not just get her something from a show she likes? 
+    next: sec12
+    type: conv
+  sec12:
+    speaker: toby
+    display: I don't know...
+    next: sec13
+    type: conv
+  sec13:
+    speaker: ingram
+    display: Oh, here's an idea. You finished building your 3D printer, right? Just print her something. What's that show called? Full Metal Jacket? The big armor guy?
+    next: sec14
+    type: conv
+  sec14:
+    speaker: toby
+    display: Okay, wow. First, it's called Fullmetal Alchemist. Second, that's... actually not a bad idea. I might go window shopping anyway. It's hard to go wrong with a really cool pen.
+    next: sec15
+    type: conv
+  sec15:
+    speaker: toby
+    display: Wait so was there anything else you wanted to talk about, or am I good to go?
+    next: sec16
+    type: conv
+  sec16:
+    speaker: ingram
+    display: No, we're all good. Go find that cool pen. Actually, if it's really cool, get me one, too. Bye, Toby.
+    next: sec17
+    type: conv
+  sec17:
+    speaker: toby
+    display: See ya, Doc!
+    next: end
+    type: conv
+  end:
+    type: end
+
+conv7:
+  requires: null
+  conflicts: null
+  next: null
+  start:
+    speaker: '?'
+    display: '...#..-h-....#....#....#.... ...#......#...... ....-wh-..#......#...... ..#......##......'
+    next: sec1
+    type: conv
+    flag: special
+  sec1: 
+    speaker: '?'
+    display: '...#.... .....##-i-....... ..#. .......#.... ...-ca-... ...#......##............ .....#......#...'
+    next: sec2
+    type: conv
+  sec2:
+    speaker: '?'
+    display: '.....#........#. ..#.. .#... ...#..-inf-...#... ....#. ....#..... ....#..#.-ali-....... ......#.....#...'
+    next: sec3#
+    type: conv
+  sec3:
+    speaker: ingram
+    display: ...(muttering) Not again
+    next: sec4
+    type: conv
+  sec4:
+    speaker: '?'
+    display: '...#.....##-o yo-#...#....'
+    next: sec5
+    type: conv
+  sec5:
+    speaker: ingram
+    display: ...It sounds clearer than last night.
+    next: sec6
+    type: conv
+  sec6:
+    speaker: '?'
+    display: '...'
+    next: end
+    type: conv
+  end:
+    type: endOfDay

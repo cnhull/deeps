@@ -42,6 +42,11 @@ class Loading extends Phaser.Scene {
         this.load.image('marker_sprite', 'img/Marker.png');
 
         //sfx
+        this.load.audio('sfx_select', 'sfx/select.wav');
+        this.load.audio('aquaria', 'sfx/aquaria.wav');
+        this.load.audio('quinns_song', 'sfx/QuinnsSong.mp3');
+        this.load.audio('sfx_radio', 'sfx/radio.wav');
+
         this.load.audio('sfx_drop', 'sfx/Click1.mp3');
         this.load.audio('sfx_select', 'sfx/blip_select12.wav');
         this.load.audio('sfx_test', 'sfx/Test_Track.mp3');

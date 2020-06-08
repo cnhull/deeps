@@ -36,7 +36,7 @@ create() {
         //this.title_music.play();
 
         // set up start button
-        this.startButton = new TextButton(this, 290, 363, '      ', game.buttonConfig, () => {/*this.title_music.stop(),*/ this.scene.start("talkingScene")});
+        this.startButton = new TextButton(this, 290, 350, '      \n      ', game.buttonConfig, () => this.nextScene());
 
         // Define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -53,5 +53,18 @@ create() {
         this.smallBubbles.tilePositionY += 2;
         this.medBubbles.tilePositionY += 1.5;
         this.largeBubbles.tilePositionY += 1;
+    }
+
+    nextScene() {
+        this.sound.play('sfx_select', {volume: 0.1});
+        
+        this.cameras.main.fadeOut(2000);
+                    
+        this.time.delayedCall(2000,
+            () => {
+                this.scene.start("talkingScene");
+            }, 
+        [], 
+        this);
     }
 }
