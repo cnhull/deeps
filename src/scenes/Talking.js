@@ -316,6 +316,9 @@ class Talking extends Phaser.Scene {
         if(hold.type == "endOfDay"){
             this.endDay();
         }
+        if(hold.type == "endGame"){
+            this.scene.start("endScene")
+        }
 
     }
 
