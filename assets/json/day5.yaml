@@ -182,7 +182,7 @@ convUp:
   requires:
     - creeped
   conflicts: null
-  next: conv7
+  next: convBlah
   start:
     type: choice
     choices:
@@ -271,7 +271,7 @@ convBlah:
   requires:
     - liar
   conflicts: null
-  next: null
+  next: conv6
   start:
     speaker: toby
     display: Well, uh. Let us know if anything changes. I'm kind of feeling like you want to be left along so I'm gonna... go. 'Night, Ingram.
@@ -283,14 +283,14 @@ convBlah:
     next: end
     type: conv
   end:
-    type: endOfDay
+    type: end
 
 
 conv6:
   requires:
     - aok
   conflicts: null
-  next: null
+  next: conv7
   start:
     speaker: toby
     display: Well, uh. Let us know if anything changes. I'm kind of feeling like you want to be left along so I'm gonna... go. 'Night, Ingram.
@@ -302,13 +302,13 @@ conv6:
     next: end
     type: conv
   end:
-    type: endOfDay
+    type: end
 
 conv7:
   requires: 
     - endGameEarly
   conflicts: null
-  next: null
+  next: conv8
   start:
     speaker: '?'
     display: '...you......#w##.. ant.... ##. ......t#o#.... ..... ...le$ve?...... ..####.##saf##..... ....##co@#l pen!#..##...#..'
@@ -353,6 +353,60 @@ conv7:
   sec6:
     speaker: '?'
     display: '...'
+    next: end
+    type: conv
+  end:
+    type: endGame
+
+conv8:
+  requires: 
+  conflicts: 
+    - endGameEarly
+  next: null
+  start:
+    speaker: '?'
+    display: '..he.y......#w##.. ant.... ##. ......t#o#.... ..... ...g...... ..####.##saf##..... ....##co@#l pen!#..##...#..'
+    next: bet1
+    type: conv
+    flag: special
+  bet1:
+    speaker: ingram
+    display: ...What do you want?
+    next: sec1
+    type: conv
+  sec1: 
+    speaker: '?'
+    display: '...#.se.e.. .....#m.#e.d.o..... ..y#o. .u......#.... ...##w#an.t.. ...#.t....o.##.........?.#...'
+    next: bet2
+    type: conv
+  bet2:
+    speaker: ingram
+    display: How are you doing that? How are you using our voices? 
+    next: sec2
+    type: conv
+  sec2:
+    speaker: '?'
+    display: '.....#...li$t.ener$#. ..#t@.y. .#ou... ...#hav.e.-inf-...#... ..to..#. ....#.k.no.. .w...#..#....... ..m!s$....#.y.ou...#...'
+    next: sec3
+    type: conv
+  sec3:
+    speaker: ingram
+    display: What do you want from us? From me?
+    next: sec4
+    type: conv
+  sec4:
+    speaker: '?'
+    display: '...sh.ould#...yo.u.#ne#d t@.. l#ave#..th.s##@tion#..f..or... a n.y rea$o.n.....'
+    next: sec5
+    type: conv
+  sec5:
+    speaker: ingram
+    display: '...'
+    next: end
+    type: conv
+  sec6:
+    speaker: '?'
+    display: '..ex.ci#ed ...#....t.o....### #..#..#.h....av..# ##....f#...un...#'
     next: end
     type: conv
   end:

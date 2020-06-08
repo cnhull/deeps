@@ -145,7 +145,7 @@ conv4:
   radio3re:
     speaker: toby
     display: It wasn't the last time I checked. Why?
-    next: Radio3re2
+    next: radio3re2
     type: conv
   radio3re2:
     speaker: ingram

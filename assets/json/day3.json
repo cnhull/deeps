@@ -2,7 +2,7 @@
     "conv1": {
       "requires": null,
       "conflicts": null,
-      "next": null,
+      "next": "conv2",
       "start": {
         "speaker": "toby",
         "display": "Knock, knock! Anybody home in there?",
@@ -168,7 +168,7 @@
       "radio3re": {
         "speaker": "toby",
         "display": "It wasn't the last time I checked. Why?",
-        "next": "Radio3re2",
+        "next": "radio3re2",
         "type": "conv"
       },
       "radio3re2": {
